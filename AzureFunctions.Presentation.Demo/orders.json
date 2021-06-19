@@ -1,0 +1,9 @@
+{
+  "orders": [
+    {
+      "orderId": 1,
+      "email": "daniel.rusnok@itixo.com",
+      "productId": 452
+    }
+  ] 
+}
