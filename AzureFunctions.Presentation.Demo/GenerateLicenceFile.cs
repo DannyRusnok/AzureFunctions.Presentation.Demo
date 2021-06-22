@@ -12,14 +12,14 @@ namespace AzureFunctions.Presentation.Demo
         [FunctionName("GenerateLicenceFile")]
         public static void Run(
             [QueueTrigger("orders", Connection = "AzureWebJobsStorage")]Order order,
-            [Blob("licenses/{rand-guid}.lic")] TextWriter outputBlob, //Example of input binding
+            [Blob("licenses/{rand-guid}.lic")] TextWriter blob, //Example of input binding
             ILogger log)
         {
-            outputBlob.WriteLine($"OrderId: {order.OrderId}");
-            outputBlob.WriteLine($"Email: {order.Email}");
-            outputBlob.WriteLine($"ProductId: {order.ProductId}");
-            outputBlob.WriteLine($"PurchaseDate: {DateTime.UtcNow}");
-            outputBlob.WriteLine($"LicenceCode: {Guid.NewGuid()}");
+            blob.WriteLine($"OrderId: {order.OrderId}");
+            blob.WriteLine($"Email: {order.Email}");
+            blob.WriteLine($"ProductId: {order.ProductId}");
+            blob.WriteLine($"PurchaseDate: {DateTime.UtcNow}");
+            blob.WriteLine($"LicenceCode: {Guid.NewGuid()}");
 
             log.LogInformation("************** GENERATING LICENCE FILE *******************\n");
             log.LogInformation($"OrderId: {order.OrderId}");
